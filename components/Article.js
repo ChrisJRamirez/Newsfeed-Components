@@ -100,7 +100,7 @@ const data = [
 
     {three separate paragraph elements}
 
-    <span class="expandButton">+</span>
+    <span class="expandButton">+</span>    **note -- what is this plus sign and how do i add it
   </div>
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
@@ -117,8 +117,10 @@ const data = [
 
 // Step 1 article maker
 
+const mainArticleDiv = document.querySelector(".articles")
 
-function articleMaker({ data }) {
+function articleMaker(object) {
+  // console.log(object)
   // adding in elements
   const articleDiv = document.createElement("div")
   const articleTitle = document.createElement("h2")
@@ -129,8 +131,6 @@ function articleMaker({ data }) {
   const articleSpan = document.createElement("span")
 
   //setting up structure of elements
-  const mainArticleDiv = document.querySelector("div.articles")
-
   mainArticleDiv.appendChild(articleDiv)
   articleDiv.appendChild(articleTitle)
   articleDiv.appendChild(articleDate)
@@ -144,15 +144,29 @@ function articleMaker({ data }) {
   articleDate.classList.add("date")
   articleSpan.classList.add("expandButton")
 
-  //adding text content
-  articleTitle.textContent = title
+  // //adding text content
+  articleSpan.textContent = "+"
+  articleTitle.textContent = object.title
+  articleDate.textContent = object.date
+  para1.textContent = object.firstParagraph
+  para2.textContent = object.secondParagraph
+  para3.textContent = object.thirdParagraph
 
   // Step 2 - adding event listener on span
-  // articleSpan.addEventListener
+  const articleButton = document.querySelector(".expandButton")
+  articleButton.addEventListener("click", () => {
+    articleDiv.classList.toggle("article-open")
+  });
 
-
-  return articleMaker({ data });
+  // step 3 return something
+  return articleDiv;
 
 }
 
-articleMaker({ data });
+// Step 4 iterating over data
+data.forEach(articleObject => {
+  // console.log(articleObject)
+  const newArticle = articleMaker(articleObject)
+  mainArticleDiv.appendChild(newArticle)
+})
+
