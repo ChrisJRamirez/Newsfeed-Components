@@ -100,7 +100,7 @@ const data = [
 
     {three separate paragraph elements}
 
-    <span class="expandButton">+</span>
+    <span class="expandButton">+</span>    **note -- what is this plus sign and how do i add it
   </div>
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
@@ -114,3 +114,64 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+// Step 1 article maker
+
+const mainArticleDiv = document.querySelector(".articles")
+
+function articleMaker(object) {
+  // console.log(object)
+  // adding in elements
+  const articleDiv = document.createElement("div")
+  const articleTitle = document.createElement("h2")
+  const articleDate = document.createElement("p")
+  const para1 = document.createElement("p")
+  const para2 = document.createElement("p")
+  const para3 = document.createElement("p")
+  const articleSpan = document.createElement("span")
+
+  //setting up structure of elements
+  mainArticleDiv.appendChild(articleDiv)
+  articleDiv.appendChild(articleTitle)
+  articleDiv.appendChild(articleDate)
+  articleDiv.appendChild(para1)
+  articleDiv.appendChild(para2)
+  articleDiv.appendChild(para3)
+  articleDiv.appendChild(articleSpan)
+
+  //setting up class names
+  articleDiv.classList.add("article")
+  articleDate.classList.add("date")
+  articleSpan.classList.add("expandButton")
+
+  // //adding text content
+  articleSpan.textContent = "+"
+  articleTitle.textContent = object.title
+  articleDate.textContent = object.date
+  para1.textContent = object.firstParagraph
+  para2.textContent = object.secondParagraph
+  para3.textContent = object.thirdParagraph
+
+  // Step 2 - adding event listener on span
+  // const articleButton = document.querySelector(".expandButton")
+  articleSpan.addEventListener("click", () => {
+    articleDiv.classList.toggle("article-open")
+  });
+
+  // step 3 return something
+  return articleDiv;
+
+}
+
+// Step 4 iterating over data
+data.forEach(articleObject => {
+  // console.log(articleObject)
+  const newArticle = articleMaker(articleObject)
+  mainArticleDiv.appendChild(newArticle)
+})
+
+// Step 5 adding in article
+articleMaker({
+  title: "this is a test", data: "2021", firstParagraph: "my name is Chris",
+  secondParagraph: "i like turtles", thirdParagraph: "coding is hard"
+})
