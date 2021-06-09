@@ -114,3 +114,45 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+// Step 1 article maker
+
+
+function articleMaker({ data }) {
+  // adding in elements
+  const articleDiv = document.createElement("div")
+  const articleTitle = document.createElement("h2")
+  const articleDate = document.createElement("p")
+  const para1 = document.createElement("p")
+  const para2 = document.createElement("p")
+  const para3 = document.createElement("p")
+  const articleSpan = document.createElement("span")
+
+  //setting up structure of elements
+  const mainArticleDiv = document.querySelector("div.articles")
+
+  mainArticleDiv.appendChild(articleDiv)
+  articleDiv.appendChild(articleTitle)
+  articleDiv.appendChild(articleDate)
+  articleDiv.appendChild(para1)
+  articleDiv.appendChild(para2)
+  articleDiv.appendChild(para3)
+  articleDiv.appendChild(articleSpan)
+
+  //setting up class names
+  articleDiv.classList.add("article")
+  articleDate.classList.add("date")
+  articleSpan.classList.add("expandButton")
+
+  //adding text content
+  articleTitle.textContent = title
+
+  // Step 2 - adding event listener on span
+  // articleSpan.addEventListener
+
+
+  return articleMaker({ data });
+
+}
+
+articleMaker({ data });
