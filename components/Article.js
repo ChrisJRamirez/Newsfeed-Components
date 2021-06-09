@@ -153,8 +153,8 @@ function articleMaker(object) {
   para3.textContent = object.thirdParagraph
 
   // Step 2 - adding event listener on span
-  const articleButton = document.querySelector(".expandButton")
-  articleButton.addEventListener("click", () => {
+  // const articleButton = document.querySelector(".expandButton")
+  articleSpan.addEventListener("click", () => {
     articleDiv.classList.toggle("article-open")
   });
 
