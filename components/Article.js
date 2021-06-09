@@ -170,3 +170,8 @@ data.forEach(articleObject => {
   mainArticleDiv.appendChild(newArticle)
 })
 
+// Step 5 adding in article
+articleMaker({
+  title: "this is a test", data: "2021", firstParagraph: "my name is Chris",
+  secondParagraph: "i like turtles", thirdParagraph: "coding is hard"
+})
