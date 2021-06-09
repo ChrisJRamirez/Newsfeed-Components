@@ -34,7 +34,7 @@ let menuItems = [
 
 
 // Step 1 menuMaker component creation
-
+const mainMenu = document.querySelector(".header")
 function menuMaker(menuArray) {
   // adding in elements
   const menuDiv = document.createElement("div")
@@ -42,6 +42,7 @@ function menuMaker(menuArray) {
   // const menuLi = document.createElement("li")
 
   // setting up structure of elements
+  mainMenu.appendChild(menuDiv)
   menuDiv.appendChild(menuList)
   // menuList.appendChild(menuLi)
 
@@ -49,22 +50,22 @@ function menuMaker(menuArray) {
   menuDiv.classList.add("menu")
 
   // Step 2 iterating over the array
-  menuArray.forEach(menuObject => {
+  menuItems.forEach(menuObject => {
     const newLi = document.createElement("li")
+    newLi.textContent = menuObject
     menuList.appendChild(newLi)
 
-    // Step 3 selecting menu button
-    const menuButton = document.querySelector(".menu-button")
+  })
+  // Step 3 selecting menu button
+  const menuButton = document.querySelector(".menu-button")
 
-    // Step 4 adding click event
-    menuButton.addEventListener("click", () => {
-      menuDiv.classList.toggle("menu--open")
-    })
-
+  // Step 4 adding click event
+  menuButton.addEventListener("click", () => {
+    menuDiv.classList.toggle("menu--open")
   })
 
   //Step 5 return menuMaker
   return menuDiv
 }
-
-menuMaker("name", "chris", "Ramirez")
+// Step 6
+menuMaker(menuItems)
